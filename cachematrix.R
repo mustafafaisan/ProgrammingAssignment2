@@ -1,16 +1,16 @@
-## Invesre of matrix is caclulated using a 2 methods
-## a. Noraml way b. Using Local cache
-## inverseMatrixNoCache and  inverseMatrixWithCache are used to assess its performance 
+## Put comments here that give an overall description of what your
 ## functions do
 
 ## function to 
 
 makeCacheMatrix <- function(x = matrix()) {
-    y <- NULL
+    # This function creates and returns a list of getter and setter functions
+    # to functions to matrix x and its inverse y
+    y <- NULL # to hold inverse of matrix x
     get <- function() x
     set <- function(mat){
         x <<- mat
-        y <<- NULL
+        y <<- NULL # matrix is updated, assign null to inverse
     }
     getinverse <- function() y
     setinverse <- function(m) y <<- mat
@@ -31,6 +31,7 @@ cacheSolve <- function(x, ...) {
         return(inv)
     }
     matData = x$get()
+    # For matrix inverse cannot be calulated, using try cache
     tryCatch({
         inv = solve(matData)
         x$setinverse(inv)
